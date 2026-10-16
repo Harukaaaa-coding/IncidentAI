@@ -1,0 +1,17 @@
+{
+  "id": "KB-cache-failure",
+  "title": "Redis dependency failure and cache degradation",
+  "service": "checkout-service",
+  "incident_type": "cache-failure",
+  "severity": "SEV-2",
+  "date": "2026-09-20",
+  "root_cause": "Redis unavailability or cache timeouts can increase latency and origin load.",
+  "resolution": "Propose approved cache bypass or failover with bounded traffic and monitor database load.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "Redis timeouts, falling cache hit ratio and rising checkout latency",
+  "signal": "RedisConnectionError CacheTimeout CacheUnavailable",
+  "diagnostic": "Inspect Redis health, cache hit ratio, network reachability and downstream database pressure.",
+  "source": "knowledge/v2/cache-failure.json",
+  "text": "Synthetic V2 runbook. A Redis failure can cause secondary database pressure. Follow the checkout-to-Redis dependency before attributing all latency to Postgres. Confirm direct cache errors and metrics. Cache bypass is a mitigation with a capacity risk; require human approval and verify error rate, latency and origin database load afterward."
+}

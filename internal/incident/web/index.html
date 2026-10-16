@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IncidentAI V1</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">SIMULATION · SINGLE AGENT</p>
+        <h1>IncidentAI</h1>
+        <p class="subtitle">Evidence-first investigation for a post-deployment error spike.</p>
+      </header>
+
+      <section class="panel trigger">
+        <div>
+          <h2>Incident commander</h2>
+          <p>Every conclusion must be supported by tool evidence. Rollback always needs a human approval.</p>
+        </div>
+        <label for="incident">Incident</label>
+        <textarea id="incident" rows="3">checkout-service 的 error rate 突然升到 22%，请调查。</textarea>
+        <div class="actions">
+          <button id="investigate">Investigate incident</button>
+          <button id="reset" class="secondary">Reset simulation</button>
+        </div>
+        <p id="status" class="status" aria-live="polite">Ready. The simulated deployment is v2.8.1.</p>
+      </section>
+
+      <section id="result" class="result" hidden>
+        <div class="result-heading">
+          <div>
+            <p class="eyebrow">INVESTIGATION RESULT</p>
+            <h2 id="result-status"></h2>
+          </div>
+          <span id="version" class="pill"></span>
+        </div>
+        <div class="grid two">
+          <article class="card"><h3>Conclusion</h3><p id="conclusion"></p></article>
+          <article class="card"><h3>Tool trace</h3><ol id="steps" class="compact-list"></ol></article>
+        </div>
+        <div class="grid two">
+          <article class="card"><h3>Evidence</h3><ul id="facts" class="compact-list"></ul></article>
+          <article class="card"><h3>Hypotheses</h3><div id="hypotheses"></div></article>
+        </div>
+        <article id="recommendation" class="recommendation" hidden>
+          <p class="eyebrow">RECOMMENDED ACTION</p>
+          <h3 id="action-title"></h3>
+          <p id="action-reason"></p>
+          <div class="action-meta"><span id="confidence"></span><span id="risk"></span></div>
+          <button id="approve">Approve rollback</button>
+        </article>
+        <article id="postmortem" class="card" hidden>
+          <p class="eyebrow">POSTMORTEM</p>
+          <h3 id="postmortem-title"></h3>
+          <p id="postmortem-root"></p>
+          <h4>Timeline</h4><ul id="timeline" class="compact-list"></ul>
+          <h4>Preventive actions</h4><ul id="preventive" class="compact-list"></ul>
+        </article>
+      </section>
+
+      <section class="panel tools">
+        <div class="result-heading">
+          <div><p class="eyebrow">NO AI REQUIRED</p><h2>Manual tool verification</h2></div>
+          <button id="refresh-tools" class="secondary">Refresh evidence</button>
+        </div>
+        <p>These are the same read-only tool results the commander uses during its initial investigation.</p>
+        <div class="grid three">
+          <article class="tool-card"><h3>Metrics</h3><pre id="metrics"></pre></article>
+          <article class="tool-card"><h3>Logs</h3><pre id="logs"></pre></article>
+          <article class="tool-card"><h3>Deployments</h3><pre id="deployments"></pre></article>
+          <article class="tool-card"><h3>ripgrep code search</h3><pre id="code"></pre></article>
+          <article class="tool-card"><h3>Git diff</h3><pre id="diff"></pre></article>
+          <article class="tool-card"><h3>Knowledge search</h3><pre id="knowledge"></pre></article>
+        </div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

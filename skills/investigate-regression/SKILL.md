@@ -1,0 +1,5 @@
+# Investigate deployment regression
+
+Compare release time against the first errors. Search the observed error literally with ripgrep, read retry code, and inspect the complete three-file version snapshot diff. Run the fixed synthetic replay to test whether the observed retry budget change can produce the observed checkout failures under the same controlled workload. The replay executes actual retry.py and compares 1,000 operations with retry limits read from each version snapshot. It establishes a mechanism within this simulation; it is not real production traffic. Provider error rate measures terminal HTTP 5xx responses, not per-attempt transient timeouts. Search historical incidents, but treat historical similarity as supporting context rather than proof. Preserve alternative causes and challenge missing evidence.
+
+The executable plan is in plan.json. The coordinator supplies scenario_id and incident_id to every backend call. Empty search_code arguments require the observed dominant error as query. search_knowledge, plan_recovery and write_postmortem run inside the platform coordinator, not the external MCP server.

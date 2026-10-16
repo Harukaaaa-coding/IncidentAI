@@ -1,0 +1,17 @@
+{
+  "id": "KB-external-provider",
+  "title": "External payment provider outage",
+  "service": "checkout-service",
+  "incident_type": "provider-outage",
+  "severity": "SEV-1",
+  "date": "2026-09-24",
+  "root_cause": "An external payment provider outage can fail payments while internal dependencies remain healthy.",
+  "resolution": "Propose an approved provider fallback or circuit-breaker mitigation; verify checkout and provider metrics.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "checkout failures with payment provider errors and normal internal database/cache health",
+  "signal": "PaymentProviderUnavailable ProviderUnavailable PaymentTimeout provider 503",
+  "diagnostic": "Inspect payment-service and bank API dependency health, provider errors and current code diff.",
+  "source": "knowledge/v2/external-provider.json",
+  "text": "Synthetic V2 runbook. Compare external payment provider error rate against internal database, Redis, CPU and memory health. Provider failures without a relevant code regression support an external API outage. A coincident release alone does not justify rollback. Record external status evidence with its timestamp and source. Do not treat an old outage report as current evidence."
+}

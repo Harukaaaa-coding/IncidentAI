@@ -1,0 +1,48 @@
+{
+  "id": "investigate-regression",
+  "title": "Investigate deployment regression",
+  "incident_types": [
+    "deployment-regression"
+  ],
+  "steps": [
+    {
+      "id": "error-source",
+      "title": "Search the observed error",
+      "agent": "code",
+      "tool": "search_code",
+      "arguments": {}
+    },
+    {
+      "id": "retry-code",
+      "title": "Read retry implementation",
+      "agent": "code",
+      "tool": "read_file",
+      "arguments": {
+        "path": "retry.py"
+      }
+    },
+    {
+      "id": "version-diff",
+      "title": "Inspect deployment configuration diff",
+      "agent": "code",
+      "tool": "git_diff",
+      "arguments": {}
+    },
+    {
+      "id": "retry-reproduction",
+      "title": "Replay identical synthetic payment workload with both retry limits",
+      "agent": "code",
+      "tool": "run_reproduction",
+      "arguments": {}
+    },
+    {
+      "id": "history",
+      "title": "Find previous retry incidents",
+      "agent": "knowledge",
+      "tool": "search_knowledge",
+      "arguments": {
+        "query": "checkout retry configuration deployment rollback"
+      }
+    }
+  ]
+}

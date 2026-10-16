@@ -1,0 +1,17 @@
+{
+  "id": "KB-resource-regression",
+  "title": "Memory leak and CPU resource regression",
+  "service": "checkout-service",
+  "incident_type": "resource-regression",
+  "severity": "SEV-2",
+  "date": "2026-09-23",
+  "root_cause": "Unbounded object retention or expensive request work may cause memory and CPU regressions.",
+  "resolution": "Propose an approved rollback or bounded restart after confirming resource evidence; monitor recurrence.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "heap and CPU growth with restarts, elevated latency or OOM signals",
+  "signal": "MemoryPressure OutOfMemoryError OOMKilled CPUThrottle heap memory",
+  "diagnostic": "Inspect memory trend, CPU utilization, restart counts, release timing and suspicious code changes.",
+  "source": "knowledge/v2/resource-regression.json",
+  "text": "Synthetic V2 runbook. Sustained heap growth, OOM events and CPU throttling require resource investigation. A restart may temporarily hide a leak; recovery verification must check the trend rather than a single healthy point. Inspect release diffs to separate resource regression from increased legitimate load. Confirm normal database, provider and cache health before dismissing dependency problems."
+}

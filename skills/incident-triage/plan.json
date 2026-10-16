@@ -1,0 +1,44 @@
+{
+  "id": "incident-triage",
+  "title": "Initial incident triage",
+  "incident_types": [
+    "*"
+  ],
+  "steps": [
+    {
+      "id": "metrics",
+      "title": "Check checkout metrics",
+      "agent": "observability",
+      "tool": "get_metrics",
+      "arguments": {}
+    },
+    {
+      "id": "logs",
+      "title": "Inspect recurring error signatures",
+      "agent": "observability",
+      "tool": "search_logs",
+      "arguments": {}
+    },
+    {
+      "id": "deployments",
+      "title": "Check recent deployments",
+      "agent": "observability",
+      "tool": "get_deployments",
+      "arguments": {}
+    },
+    {
+      "id": "health",
+      "title": "Check database and dependency signals",
+      "agent": "observability",
+      "tool": "get_health",
+      "arguments": {}
+    },
+    {
+      "id": "topology",
+      "title": "Trace affected dependencies",
+      "agent": "observability",
+      "tool": "get_topology",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "KB-memory-review",
+  "title": "Reviewing incident lessons before reuse",
+  "service": "all",
+  "incident_type": "all",
+  "severity": "reference",
+  "date": "2026-09-27",
+  "root_cause": "Unreviewed or outdated historical diagnoses can contaminate future investigations.",
+  "resolution": "Create candidate experience after resolution, then have a human confirm, mark probable, reject or mark outdated.",
+  "status": "confirmed",
+  "environment": "all",
+  "pattern": "resolved incident becomes a candidate memory",
+  "signal": "evidence provenance review",
+  "diagnostic": "Check root cause evidence, actual recovery verification, service, environment and incident date.",
+  "source": "knowledge/v2/memory-review.json",
+  "text": "Candidate memories are proposals. Only confirmed memories are retrieved as historical experience. A similar past event provides a hypothesis, not evidence that the same cause exists now. Every memory must retain its incident ID, evidence references, source and review history. Rejected, probable and outdated entries remain available for audit but are excluded from default retrieval."
+}

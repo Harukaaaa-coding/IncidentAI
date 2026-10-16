@@ -1,0 +1,16 @@
+{
+  "id": "write-postmortem",
+  "title": "Write evidence-linked postmortem",
+  "incident_types": [
+    "*"
+  ],
+  "steps": [
+    {
+      "id": "postmortem",
+      "title": "Write the verified incident report",
+      "agent": "commander",
+      "tool": "write_postmortem",
+      "arguments": {}
+    }
+  ]
+}

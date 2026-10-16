@@ -1,0 +1,14 @@
+{
+  "service": "checkout-service",
+  "current_version": "v2.8.1",
+  "previous_version": "v2.8.0",
+  "deployed_at": "14:32",
+  "events": [
+    {
+      "action": "deploy",
+      "from_version": "v2.8.0",
+      "to_version": "v2.8.1",
+      "timestamp": "14:32"
+    }
+  ]
+}

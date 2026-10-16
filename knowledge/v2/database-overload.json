@@ -1,0 +1,17 @@
+{
+  "id": "KB-database-overload",
+  "title": "Database saturation and connection-pool exhaustion",
+  "service": "checkout-service",
+  "incident_type": "database-overload",
+  "severity": "SEV-1",
+  "date": "2026-09-22",
+  "root_cause": "Database latency and connection-pool saturation can block checkout requests.",
+  "resolution": "Propose a reversible pool or load mitigation after checking the database; require approval for replica changes and block direct database mutations.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "high API latency with elevated database p95 and exhausted connections",
+  "signal": "ConnectionPoolExhausted DatabaseError database latency",
+  "diagnostic": "Check database p95, active connections, query volume, queue depth and deployments. Compare provider and cache health.",
+  "source": "knowledge/v2/database-overload.json",
+  "text": "Synthetic V2 runbook. High database latency plus exhausted connection pools supports database overload. An absent recent deployment weakens deployment regression but does not prove the database hypothesis. A healthy database is evidence against overload. Do not blindly increase pool limits: they may increase server load. Verify recovery with both API and database metrics."
+}

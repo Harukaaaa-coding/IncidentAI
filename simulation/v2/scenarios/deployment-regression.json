@@ -1,0 +1,166 @@
+{
+  "scenario": {
+    "id": "deployment-regression",
+    "name": "Bad deployment",
+    "service": "checkout-service",
+    "severity": "SEV-1",
+    "description": "Checkout errors rose after a release."
+  },
+  "points": [
+    {
+      "time": "14:30",
+      "error_rate": 1,
+      "latency_ms": 90
+    },
+    {
+      "time": "14:32",
+      "error_rate": 1.2,
+      "latency_ms": 100
+    },
+    {
+      "time": "14:35",
+      "error_rate": 7,
+      "latency_ms": 110
+    },
+    {
+      "time": "14:38",
+      "error_rate": 22,
+      "latency_ms": 115
+    }
+  ],
+  "signals": {
+    "db_latency_ms": 18,
+    "db_pool_pct": 35,
+    "cache_error_rate": 0.1,
+    "provider_error_rate": 0.2,
+    "memory_pct": 42,
+    "cpu_pct": 28,
+    "retry_limit_before": 5,
+    "retry_limit_after": 2
+  },
+  "logs": [
+    {
+      "timestamp": "14:35:00",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:35:04",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:35:08",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:35:12",
+      "level": "INFO",
+      "message": "HealthCheckOK",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:35:16",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:35:20",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:24",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:28",
+      "level": "INFO",
+      "message": "HealthCheckOK",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:32",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:36",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:40",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    },
+    {
+      "timestamp": "14:38:44",
+      "level": "ERROR",
+      "message": "PaymentRetryExceeded",
+      "service": "checkout-service",
+      "endpoint": "/checkout"
+    }
+  ],
+  "deployment": {
+    "current_version": "v2.8.1",
+    "previous_version": "v2.8.0",
+    "deployed_at": "14:32",
+    "recent": true
+  },
+  "nodes": [
+    {
+      "id": "frontend",
+      "health": "healthy",
+      "latency_ms": 18
+    },
+    {
+      "id": "checkout-service",
+      "health": "degraded",
+      "latency_ms": 115
+    },
+    {
+      "id": "payment-service",
+      "health": "healthy",
+      "latency_ms": 18
+    },
+    {
+      "id": "bank-api",
+      "health": "healthy",
+      "latency_ms": 18
+    },
+    {
+      "id": "redis",
+      "health": "healthy",
+      "latency_ms": 18
+    },
+    {
+      "id": "postgres",
+      "health": "healthy",
+      "latency_ms": 18
+    }
+  ],
+  "recovery_action": "rollback"
+}

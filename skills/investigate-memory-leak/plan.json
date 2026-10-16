@@ -1,0 +1,34 @@
+{
+  "id": "investigate-memory-leak",
+  "title": "Investigate memory and CPU pressure",
+  "incident_types": [
+    "resource-regression"
+  ],
+  "steps": [
+    {
+      "id": "resource-health",
+      "title": "Read memory and CPU pressure",
+      "agent": "observability",
+      "tool": "get_health",
+      "arguments": {}
+    },
+    {
+      "id": "resource-errors",
+      "title": "Inspect resource pressure errors",
+      "agent": "observability",
+      "tool": "search_logs",
+      "arguments": {
+        "query": "MemoryPressure"
+      }
+    },
+    {
+      "id": "resource-history",
+      "title": "Find resource incident experience",
+      "agent": "knowledge",
+      "tool": "search_knowledge",
+      "arguments": {
+        "query": "memory CPU resource pressure replica restart"
+      }
+    }
+  ]
+}

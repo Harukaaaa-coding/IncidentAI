@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>IncidentAI · Incident Control Center</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/local-projects.css">
+  <script src="/local-projects.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳至工作区</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="IncidentAI 首页"><span class="brand-mark" aria-hidden="true">i</span><span>Incident<span class="brand-ai">AI</span></span><span class="version">V2</span></a>
+    <nav class="topnav" aria-label="主导航">
+      <button class="nav-button" data-view="projects">本地项目</button>
+      <button class="nav-button active" data-view="workbench" aria-current="page">调查工作台</button>
+      <button class="nav-button" data-view="memory">经验库</button>
+      <button class="nav-button" data-view="evaluation">评测</button>
+      <button class="nav-button" data-view="platform">平台能力</button>
+    </nav>
+    <button class="button secondary" id="add-local-project" type="button">＋ 添加本地项目</button>
+    <div class="environment"><span class="environment-dot" aria-hidden="true"></span><span id="environment-label">本地模拟环境</span><span class="engine-badge" id="engine-label">正在连接</span></div>
+  </header>
+  <div class="error-banner" id="error-banner" role="alert" hidden><span id="error-text"></span><button type="button" id="dismiss-error" aria-label="关闭错误提示">×</button></div>
+  <div class="workspace" id="workbench-view">
+    <aside class="incident-rail" aria-label="事故列表">
+      <div class="rail-title"><h2>事故</h2><span id="incident-count" class="count">0</span><button class="icon-button" id="new-incident" aria-label="创建事故" title="创建事故">＋</button></div>
+      <label class="search-field"><span aria-hidden="true">⌕</span><input id="incident-search" type="search" placeholder="搜索服务或事故" aria-label="搜索服务或事故"></label>
+      <div class="rail-section-label"><span>全部事故</span><button id="refresh-incidents" class="text-button" title="刷新事故列表">刷新</button></div>
+      <div class="incident-list" id="incident-list"><p class="empty-note">正在读取事故…</p></div>
+      <div class="rail-footer"><span class="live-dot" aria-hidden="true"></span><div><strong id="connection-label">连接服务中</strong><span id="tool-count">等待工具注册信息</span></div><span class="mono">LOCAL</span></div>
+    </aside>
+    <main class="investigation" id="main-content" tabindex="-1"><div class="initial-loading">正在加载调查工作区…</div></main>
+    <aside class="inspector" id="inspector" aria-label="证据与行动"><div class="inspector-empty"><span class="empty-icon" aria-hidden="true">⊞</span><h2>调查上下文</h2><p>选择一个事故，查看证据、历史经验与恢复建议。</p></div></aside>
+  </div>
+  <main class="page-view" id="memory-view" hidden tabindex="-1"></main>
+  <main class="page-view" id="evaluation-view" hidden tabindex="-1"></main>
+  <main class="page-view" id="platform-view" hidden tabindex="-1"></main>
+  <main class="page-view local-projects-view" id="projects-view" hidden tabindex="-1" aria-label="本地项目调查"></main>
+  <dialog class="create-dialog" id="create-dialog" aria-labelledby="create-title">
+    <form id="create-form">
+      <div class="dialog-heading"><div><p class="eyebrow">NEW INCIDENT</p><h2 id="create-title">创建模拟事故</h2></div><button class="icon-button" type="button" id="close-create" aria-label="关闭">×</button></div>
+      <p class="muted">选择一个故障场景。每次调查保留独立的证据与审批记录。</p>
+      <label class="form-label" for="scenario-select">故障场景</label><select id="scenario-select" name="scenario_id" required></select>
+      <p class="form-hint" id="scenario-description"></p>
+      <label class="form-label" for="incident-title">事故标题 <span class="muted">（可选）</span></label><input id="incident-title" name="title" maxlength="200" placeholder="留空使用场景名称">
+      <fieldset class="mode-fieldset"><legend class="form-label">调查编排</legend><label><input type="radio" name="mode" value="multi" checked><span><strong>多 Agent 协作</strong><small>观测、代码、知识分工调查，汇总与复核</small></span></label><label><input type="radio" name="mode" value="single"><span><strong>单 Agent</strong><small>由 Incident Commander 串行调查</small></span></label></fieldset>
+      <p class="form-hint" id="create-engine-hint"></p>
+      <div class="dialog-actions"><button class="button secondary" type="button" id="cancel-create">取消</button><button class="button primary" id="submit-create" type="submit">创建事故 <span aria-hidden="true">↗</span></button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

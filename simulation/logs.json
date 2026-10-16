@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "14:35:12",
+    "level": "ERROR",
+    "message": "PaymentRetryExceeded",
+    "fields": { "service": "checkout-service", "request_id": "chk_1001" }
+  },
+  {
+    "timestamp": "14:36:07",
+    "level": "ERROR",
+    "message": "PaymentRetryExceeded",
+    "fields": { "service": "checkout-service", "request_id": "chk_1002" }
+  },
+  {
+    "timestamp": "14:37:44",
+    "level": "ERROR",
+    "message": "PaymentRetryExceeded",
+    "fields": { "service": "checkout-service", "request_id": "chk_1003" }
+  },
+  {
+    "timestamp": "14:37:50",
+    "level": "INFO",
+    "message": "DatabaseLatency",
+    "fields": { "service": "payments-db", "p95_ms": "28", "status": "normal" }
+  }
+]

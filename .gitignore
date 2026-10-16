@@ -1,0 +1,23 @@
+/.idea/
+/data/
+/config.yaml
+/config/mcp.json
+/incidentai.exe
+/incidentai
+/coverage.out
+*.tmp
+
+# Local credentials and runtime artifacts must never be published.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+.runtime/
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Version fixtures are tracked as files, never as nested Git metadata.
+**/.git/

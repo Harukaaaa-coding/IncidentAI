@@ -1,0 +1,33 @@
+{
+  "id": "investigate-latency",
+  "title": "Investigate latency and dependency failures",
+  "incident_types": [
+    "cache-failure",
+    "provider-outage"
+  ],
+  "steps": [
+    {
+      "id": "dependency-health",
+      "title": "Read dependency health signals",
+      "agent": "observability",
+      "tool": "get_health",
+      "arguments": {}
+    },
+    {
+      "id": "dependency-graph",
+      "title": "Identify the failing dependency",
+      "agent": "observability",
+      "tool": "get_topology",
+      "arguments": {}
+    },
+    {
+      "id": "latency-history",
+      "title": "Find dependency incident experience",
+      "agent": "knowledge",
+      "tool": "search_knowledge",
+      "arguments": {
+        "query": "cache Redis payment provider outage timeout failover bypass"
+      }
+    }
+  ]
+}

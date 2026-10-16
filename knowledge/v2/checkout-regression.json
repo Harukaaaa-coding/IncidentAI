@@ -1,0 +1,20 @@
+{
+  "id": "KB-checkout-regression",
+  "title": "Checkout deployment regression runbook",
+  "service": "checkout-service",
+  "incident_type": "deployment-regression",
+  "severity": "SEV-1",
+  "date": "2026-09-26",
+  "root_cause": "A reduced retry_limit can exhaust payment retry attempts.",
+  "resolution": "After verifying the exact diff and excluding dependencies, propose rollback for human approval and verify error metrics.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "checkout error spike within minutes after config deployment",
+  "signal": "PaymentRetryExceeded retry_limit",
+  "diagnostic": "Correlate metrics with release time; inspect retry.py using ripgrep; compare deployed configuration with last healthy version.",
+  "source": "knowledge/v2/checkout-regression.json",
+  "evidence": [
+    "simulation/v2/repository/config.yaml"
+  ],
+  "text": "Synthetic V2 reference, not evidence of the current incident. A deployment near an error spike is correlation. Confirm the retry configuration diff and retry exhaustion logs; check payment provider, database and cache health before diagnosing a deployment regression. A retry limit change from 5 to 2 reduces tolerance of transient payment failures. Never infer causality from release timing alone. Rollback production requires approval."
+}

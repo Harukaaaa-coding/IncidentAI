@@ -1,0 +1,18 @@
+{
+  "command": "go",
+  "args": ["run", "./cmd/mcp-simulator", "--root", "."],
+  "dir": ".",
+  "timeout_ms": 30000,
+  "max_output_bytes": 1048576,
+  "tools": {
+    "get_metrics": {"remote_name": "get_metrics", "risk": "read"},
+    "search_logs": {"remote_name": "search_logs", "risk": "read"},
+    "get_deployments": {"remote_name": "get_deployments", "risk": "read"},
+    "get_topology": {"remote_name": "get_topology", "risk": "read"},
+    "get_health": {"remote_name": "get_health", "risk": "read"},
+    "search_code": {"remote_name": "search_code", "risk": "read"},
+    "read_file": {"remote_name": "read_file", "risk": "read"},
+    "git_diff": {"remote_name": "git_diff", "risk": "read"},
+    "run_reproduction": {"remote_name": "run_reproduction", "risk": "read"}
+  }
+}

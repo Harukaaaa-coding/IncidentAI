@@ -1,0 +1,6 @@
+# Same report_model schema and request format as DeepSearch.
+report_model:
+  provider: bai
+  model: gpt-5.2
+  api_key: ${BAI_API_KEY}
+# Alternatively INCIDENTAI_MODEL_CONFIG can point to ../DeepSearch/config.yaml.

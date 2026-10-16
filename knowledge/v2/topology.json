@@ -1,0 +1,17 @@
+{
+  "id": "KB-topology",
+  "title": "Checkout service dependency topology",
+  "service": "checkout-service",
+  "incident_type": "all",
+  "severity": "reference",
+  "date": "2026-09-26",
+  "root_cause": "",
+  "resolution": "Investigate direct dependencies and distinguish primary failures from propagated symptoms.",
+  "status": "confirmed",
+  "environment": "simulation",
+  "pattern": "checkout fan-out to payment, Redis and Postgres",
+  "signal": "dependency topology health",
+  "diagnostic": "Compare each dependency's metrics and errors in the same time window.",
+  "source": "knowledge/v2/topology.json",
+  "text": "Synthetic V2 architecture. frontend -> checkout-service -> payment-service -> bank-api. checkout-service also depends on redis and postgres. Payment errors can propagate from bank-api while Redis failures may increase Postgres load. A topology relationship guides tool selection; it does not establish which component caused an incident. Preserve source timestamps when building the investigation timeline."
+}

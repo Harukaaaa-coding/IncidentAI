@@ -1,0 +1,16 @@
+{
+  "id": "recovery-planning",
+  "title": "Prepare governed recovery",
+  "incident_types": [
+    "*"
+  ],
+  "steps": [
+    {
+      "id": "recovery-plan",
+      "title": "Prepare action for policy evaluation",
+      "agent": "recovery",
+      "tool": "plan_recovery",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# v2.8.0
+service: checkout-service
+retry_limit: 5
+pool_limit: 20
+cache_enabled: true
